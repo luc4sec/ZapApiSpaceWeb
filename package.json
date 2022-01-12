@@ -1,5 +1,24 @@
 {
   "dependencies": {
     "shelljs": "^0.8.5"
-  }
+  },
+  "name": "autozap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://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@github.com/llucasramao/ZapApiSpaceWeb.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/llucasramao/ZapApiSpaceWeb/issues"
+  },
+  "homepage": "https://github.com/llucasramao/ZapApiSpaceWeb#readme",
+  "description": ""
 }
