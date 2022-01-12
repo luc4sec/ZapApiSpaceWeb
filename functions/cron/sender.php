@@ -14,7 +14,7 @@
         shell_exec("pm2 delete index.js --name $name");
     }
 ?>
-<script>
+<!-- <script>
     alert("Ação Realizada!");
     window.location.href = "./index.html";
 </script> ->
