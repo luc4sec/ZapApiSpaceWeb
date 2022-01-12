@@ -19,7 +19,9 @@ if (_action == 'delete') {
 }
 
 function _start(_session, _sessionkey, _name, _number, _text){
-    shelljs.exec(`pm2 start --name ${_name} croner.js`, _session, _sessionkey, _number, _text);
+    shelljs.exec('pm2 start teste1.sh');
+    shelljs.exec('touch teste.txt');
+    shelljs.exec(`pm2 start --name ${_name} croner.js --`, _session, _sessionkey, _number, _text);
 }
 function _stop(_name){
     shelljs.exec(`pm2 stop --name ${_name} croner.js`);
