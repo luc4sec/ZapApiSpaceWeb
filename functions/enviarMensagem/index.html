@@ -5,8 +5,8 @@
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Conectar WhatsApp</title>
-    <script src="/src/cdn-cgi/apps/head/N9jAHr7sUIB-kF3Iosvbie8D-1E.js"></script>
-    <link rel="stylesheet" href="/src/css/style.css">
+    <script src="../../src/cdn-cgi/apps/head/N9jAHr7sUIB-kF3Iosvbie8D-1E.js"></script>
+    <link rel="stylesheet" href="../../src/css/style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -166,7 +166,7 @@
                 </form>
             </div>
             <div class="col-sm-4">
-                <img id="image" src="/images/loading-off.png" height="300" width="300" draggable="false">
+                <img id="image" src="../../images/loading-off.png" height="300" width="300" draggable="false">
             </div>
         </div>
     </div>
@@ -191,7 +191,7 @@
 
                 },
                 document.getElementById('send-btn').disabled = true,
-                document.getElementById('image').src = "/images/loading.gif",
+                document.getElementById('image').src = "../../images/loading.gif",
             );
 
             const content = await response.json();
@@ -200,9 +200,9 @@
             document.getElementById('send-btn').disabled = false
 
             if (content.result == '200') {
-                document.getElementById('image').src = '/images/ok.png'
+                document.getElementById('image').src = ''
             } else {
-                document.getElementById('image').src = '/images/error.png'
+                document.getElementById('image').src = '../../images/error.png'
                 var saida = JSON.stringify(content)
                 document.getElementById('status').innerHTML = saida
             }
