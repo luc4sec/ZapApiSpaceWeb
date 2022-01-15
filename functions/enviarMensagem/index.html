@@ -166,7 +166,7 @@
                 </form>
             </div>
             <div class="col-sm-4">
-                <img id="image" src="../images/loading-off.png" height="300" width="300" draggable="false">
+                <img id="image" src="/images/loading-off.png" height="300" width="300" draggable="false">
             </div>
         </div>
     </div>
@@ -191,7 +191,7 @@
 
                 },
                 document.getElementById('send-btn').disabled = true,
-                document.getElementById('image').src = "../images/loading.gif",
+                document.getElementById('image').src = "/images/loading.gif",
             );
 
             const content = await response.json();
@@ -200,9 +200,9 @@
             document.getElementById('send-btn').disabled = false
 
             if (content.result == '200') {
-                document.getElementById('image').src = '../images/ok.png'
+                document.getElementById('image').src = '/images/ok.png'
             } else {
-                document.getElementById('image').src = '../images/error.png'
+                document.getElementById('image').src = '/images/error.png'
                 var saida = JSON.stringify(content)
                 document.getElementById('status').innerHTML = saida
             }
