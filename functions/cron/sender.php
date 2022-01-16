@@ -3,11 +3,12 @@
     $number = $_POST['number'];
 
     if(isset($_POST['start'])) {
-        shell_exec("node cron.js Lucas senha $number $name > logEnvios.log &");
-        echo("Lucas senha $number $text $name");
+        $r = shell_exec("node cron.js Lucas senha $number $name > logEnvios.log &");
+        print_r($r);
+	echo("Lucas senha $number $text $name");
     }
 ?>
-<script>
+<!-- <script>
     alert("Ação Realizada!");
     window.location.href = "./index.html";
-</script>
+</script> -->

@@ -11,7 +11,6 @@ _textTrinta = 'Teste de envio em 5min'
 _textoSessenta = 'Teste de envio em 10min'
 
 
-
 /*ano = 2022
 mes = 0
 dia = 12
@@ -21,8 +20,8 @@ sec = 0
 const someDate = new Date(ano, mes, dia, hora, min, sec)
 const doisD = new Date(Date.now() + 172800)
 const trintaD = new Date(Date.now()+)
-console.log(now) */
-const horaAgora = new Date(Date.now())
+console.log(now)*/
+
 
 function agendarData() {
     const job = schedule.scheduleJob(someDate, function () {
@@ -54,7 +53,31 @@ function sessentaDias() {
     })
 }
 
-console.log(`Iniciado para ${_number}, ${_name} - (${horaAgora})`)
-doisDias()
-trintaDias()
-sessentaDias()
+function teste() {
+    const horaAgora = new Date().toString();
+    console.log(`Script CRON iniciado para ${_name} | ${_number} - `, horaAgora);
+
+        schedule.scheduleJob('m-job2', '*/5 * * * *', () => {
+            console.log(`Enviando MSG2 para ${_number}, ${_name} - ${horaAgora}`)
+            functions.enviarTexto(_session, _sessionkey, _number, _textoDois)
+            schedule.cancelJob('m-job2')
+        }),
+        schedule.scheduleJob('m-job30', '*/10 * * * *', () => {
+            console.log(`Enviando MSG30 para ${_number}, ${_name} `, horaAgora)
+            functions.enviarTexto(_session, _sessionkey, _number, _textTrinta)
+            schedule.cancelJob('m-job30')
+        }),
+        schedule.scheduleJob('m-job60', '*/15 * * * *', () => {
+            console.log(`Enviando MSG60 para ${_number}, ${_name} `, horaAgora)
+            functions.enviarTexto(_session, _sessionkey, _number, _textoSessenta)
+            schedule.cancelJob('m-job60')
+        });
+    const horaFinal = new Date().toString()
+    console.log(horaFinal)
+}
+teste()
+
+
+
+
+//console.log(`Script CRON iniciado para ${_name} | ${_number} - `, horaAgora)
