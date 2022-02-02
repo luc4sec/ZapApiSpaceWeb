@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Conectar WhatsApp</title>
+    <script src="../../src/cdn-cgi/apps/head/N9jAHr7sUIB-kF3Iosvbie8D-1E.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!--Axios-->
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="../../src/css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+<style>
+    .form-control[readonly] {
+        background-color: #fff
+    }
+
+    .textOnInput {
+        position: relative;
+    }
+
+    .textOnInput label {
+        position: absolute;
+        top: -15px;
+        left: 13px;
+        padding: 2px;
+        z-index: 1;
+    }
+
+    .textOnInput label:after {
+        content: " ";
+        background-color: #fff;
+        width: 100%;
+        height: 13px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: 500;
+        display: inline-block;
+        margin-bottom: .5rem;
+    }
+
+    .form-control {
+        box-shadow: none !important;
+    }
+
+    fieldset.scheduler-border {
+        border: 1px solid lightgrey;
+        /*border: 1px groove #ddd !important;*/
+        padding: 0 1.4em 1.4em 1.4em !important;
+        margin: 0 0 1.5em 0 !important;
+        -webkit-box-shadow: 0px 0px 0px 0px #000;
+        box-shadow: 0px 0px 0px 0px #000;
+        border-radius: 5px;
+    }
+
+    legend.scheduler-border {
+        font-size: 1.2em !important;
+        font-weight: bold !important;
+        text-align: left !important;
+        width: auto;
+        padding: 0 10px;
+        border-bottom: none;
+    }
+
+    form button {
+        background: #4666F7;
+        padding: 10px;
+        border: 0;
+        margin-top: 20px;
+        color: #fff;
+        border-radius: 5px;
+        outline: 0;
+        cursor: pointer;
+        transition-duration: 200ms;
+        box-shadow: 0 2.8px 2.2px rgba(70, 102, 247, 0.034),
+            0 6.7px 5.3px rgba(70, 102, 247, 0.048),
+            0 12.5px 10px rgba(70, 102, 247, 0.06),
+            0 22.3px 17.9px rgba(70, 102, 247, 0.072),
+            0 41.8px 33.4px rgba(70, 102, 247, 0.086),
+            0 100px 80px rgba(70, 102, 247, 0.12);
+    }
+
+    form button:hover {
+        background: #263fb1;
+        transition-duration: 200ms;
+    }
+
+    form button:disabled {
+        background: #5b5e78;
+        cursor: not-allowed;
+    }
+
+    :placeholder-shown {
+        font-size: small;
+    }
+</style>
+
+<body>
+    <br><br>
+    <div class="container">
+        <h4>Gerenciar Usuários</h4>
+        <div class="row" style="margin-top: 50px;">
+            <div class="col-sm-8">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <div class="textOnInput">
+                            <label for="session">Nome do Cliente: </label>
+                            <div class="col-sm-10">
+                                <input type="text" class="form-control" id="client" name="client"
+                                    placeholder="Nome de identificação do cliente">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="textOnInput">
+                            <label for="sessionkey">Número: </label>
+                            <div class="col-sm-10">
+                                <input type="sessionkey" class="form-control" id="number" name="number"
+                                    placeholder="Número do cliente">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <button type="button" id="send-btn" onclick="addClient()">
+                                        Enviar
+                                    </button>
+                                    <div class="col-sm-8">
+                                        <span id="status"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </form>
+                <ul id="list-clients"></ul>
+            </div>
+            <div class="col-sm-4">
+                <img id="image" src="../../images/loading-off.png" height="300" width="300" draggable="false">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
