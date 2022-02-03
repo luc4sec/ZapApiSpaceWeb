@@ -11,36 +11,36 @@ function addClient() {
                     number: document.getElementById("number").value
                 })
             },
-            //document.getElementById('send-btn').disabled = true,
-            document.getElementById('image').src = "../../images/loading.gif",
         );
         const content = await response.json();
-
         document.getElementById('send-btn').disabled = false
-
         if (content.serverStatus == 2) {
-            document.getElementById('image').src = '../../images/ok.png'
+            window.location.reload();
         } else {
-            document.getElementById('image').src = '../../images/error.png'
             var saida = JSON.stringify(content)
             document.getElementById('status').innerHTML = saida
         }
     })();
 }
 
-async function listClients(){
+async function listClients() {
     const response = await axios.get('http://localhost:3000/tasks')
     const clients = response.data
-
     const lista = document.getElementById('list-clients')
-    
-    clients.forEach(client => {
-        const item = document.createElement('div')
-        item.innerText = `Nome: ${client.client} | ID: ${client.id} | Numero: ${client.number}`
 
+    clients.forEach(client => {
+        idd = client.id
+        const item = document.createElement('tr')
+        item.innerHTML = `<th>${client.client}</th><th>${client.number}</th><th>${idd}</th><th>${client.status}</th>`
         lista.appendChild(item)
     })
 }
 
-listClients()
+async function deleteClient() {
+    console.log('OI!!', document.getElementById('number').value)
+    const response = await axios.delete(`http://localhost:3000/tasks/number/${document.getElementById("number").value}`)
+    window.location.reload();
+}
 
+
+listClients()

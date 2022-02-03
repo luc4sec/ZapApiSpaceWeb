@@ -6,16 +6,12 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Conectar WhatsApp</title>
     <script src="../../src/cdn-cgi/apps/head/N9jAHr7sUIB-kF3Iosvbie8D-1E.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> <!--Axios-->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!--Axios-->
     <script src="index.js"></script>
     <link rel="stylesheet" href="../../src/css/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
 </head>
 <style>
     .form-control[readonly] {
@@ -106,12 +102,18 @@
     :placeholder-shown {
         font-size: small;
     }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+    }
 </style>
 
 <body>
     <br><br>
     <div class="container">
-        <h4>Gerenciar Usuários</h4>
+        <h2>Gerenciador de Usuários</h2>
         <div class="row" style="margin-top: 50px;">
             <div class="col-sm-8">
                 <form class="form-horizontal">
@@ -133,26 +135,27 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <button type="button" id="send-btn" onclick="addClient()">
-                                        Enviar
-                                    </button>
-                                    <div class="col-sm-8">
-                                        <span id="status"></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <button type="button" id="send-btn" onclick="addClient()">
+                        Enviar
+                    </button>
+                    <button type="button" id="send-btn" onclick="deleteClient()">
+                        Deletar
+                    </button>
+                    <div class="col-sm-8">
+                        <span id="status"></span>
                     </div>
-                    
                 </form>
-                <ul id="list-clients"></ul>
+                <br><br>
             </div>
             <div class="col-sm-4">
-                <img id="image" src="../../images/loading-off.png" height="300" width="300" draggable="false">
+                <table id="list-clients">
+                    <tr>
+                        <th>Nome</th>
+                        <th>Número</th>
+                        <th>ID</th>
+                        <th>Status</th>
+                    </tr>
+                </table>
             </div>
         </div>
     </div>
