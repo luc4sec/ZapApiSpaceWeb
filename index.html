@@ -141,41 +141,6 @@
                             </div>
                         </div>
                     </div>
-                    <!--
-<a>Avançado </a><br><br>
-<div class="form-group">
-<div class="textOnInput">
-<label for="wh_status">Webhook Send Messages:</label>
-<div class="col-sm-10">
-<input type="wh_status" class="form-control" id="wh_status" name="wh_status" placeholder="URL que recebe o Webhooks dos status das mensagens enviadas">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="textOnInput">
-<label for="wh_message">Webhook Received Messages:</label>
-<div class="col-sm-10">
-<input type="wh_message" class="form-control" id="wh_message" name="wh_message" placeholder="URL que recebe o Webhooks dos status das mensagens recebidas">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="textOnInput">
-<label for="wh_connect">Webhook Status Connection:</label>
-<div class="col-sm-10">
-<input type="wh_connect" class="form-control" id="wh_connect" name="wh_connect" placeholder="URL que recebe o status da conexão">
-</div>
-</div>
-</div>
-<div class="form-group">
-<div class="textOnInput">
-<label for="wh_qrcode">Webhook QRCode:</label>
-<div class="col-sm-10">
-<input type="wh_qrcode" class="form-control" id="wh_qrcode" name="wh_qrcode" placeholder="URL que recebe o webhooks do QRCODE do cliente">
-</div>
-</div>
-</div>
--->
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="row">
@@ -194,10 +159,10 @@
                             <div class="row">
                                 <div class="col-sm-2">
                                     <a target="_self" href="./functions/enviarMensagem/index.html">
-                                        Enviar Mensagem
+                                        Enviar Mensagem (Alfa)
                                     </a><br><br>
-                                    <a target="_self" href="./functions/cron/">
-                                        Rotina 2-30-60
+                                    <a target="_self" href="./functions/Agendador/">
+                                        Agendador (Alfa)
                                     </a>
                                 </div>
                             </div>
@@ -219,23 +184,7 @@
         let host = '107.152.47.102'
         let host_ssl = '107.152.47.102'
         let port = '3333'
-        url = "http://107.152.47.102:3333" //host_ssl == '' ? `http://${host}:${port}` : `https://${host_ssl}`
-
-        //document.getElementById('image').style.visibility = "hidden";
-        /*
-                let session;
-                document.getElementById('image').style.visibility = "hidden";
-                let url;
-                let host = '107.152.47.102'
-                let host_ssl = '107.152.47.102'
-                let port = '3333'
-                url = host //!= '' ? `${host}:${port}` : host_ssl
-
-                const socket = io(url, {});
-                const socket = io('http://107.152.47.102:3333', {});
-        */
-        //const socket = io('http://107.152.47.102:3333', {});
-
+        url = "http://107.152.47.102:3333" 
         async function getSession(session) {
             const config = {
                 headers: {

@@ -1,7 +1,7 @@
 function addClient() {
     (async () => {
         const response = await fetch(
-            'http://localhost:3000/tasks', {
+            'http://107.152.47.102:3000/tasks', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -24,7 +24,7 @@ function addClient() {
 }
 
 async function listClients() {
-    const response = await axios.get('http://localhost:3000/tasks')
+    const response = await axios.get('http://107.152.47.102:3000/tasks')
     const clients = response.data
     const lista = document.getElementById('list-clients')
 
@@ -37,8 +37,8 @@ async function listClients() {
 }
 
 async function deleteClient() {
-    console.log('OI!!', document.getElementById('number').value)
-    const response = await axios.delete(`http://localhost:3000/tasks/number/${document.getElementById("number").value}`)
+    console.log(document.getElementById('number').value)
+    const response = await axios.delete(`http://107.152.47.102:3000/tasks/number/${document.getElementById("number").value}`)
     window.location.reload();
 }
 
