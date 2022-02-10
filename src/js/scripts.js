@@ -82,10 +82,13 @@ async function alterSession(session) {
     })
 }
 
+
+
+
 function addClient() {
     (async () => {
         const response = await fetch(
-            'http://107.152.47.102:3000/tasks', {
+            'https://api.spacewebso.com.br/tasks', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -107,8 +110,61 @@ function addClient() {
     })();
 }
 
+function sendMessage() {
+    (async () => {
+        const response = await fetch(
+            'https://api.spacewebso.com.br/tasks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    client: document.getElementById("client").value,
+                    number: document.getElementById("number").value,
+                    message: document.getElementById("message").value
+                })
+            },
+        );
+        const content = await response.json();
+        document.getElementById('send-btn').disabled = false
+        if (content.serverStatus == 2) {
+            window.location.reload();
+        } else {
+            var saida = JSON.stringify(content)
+            document.getElementById('status').innerHTML = saida
+        }
+    })();
+}
+
+function schMessage() {
+    (async () => {
+        const response = await fetch(
+            'https://api.spacewebso.com.br/tasks', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    client: document.getElementById("client").value,
+                    number: document.getElementById("number").value,
+                    message: document.getElementById("message").value,
+                    date: document.getElementById("date").value
+                })
+            },
+        );
+        const content = await response.json();
+        document.getElementById('send-btn').disabled = false
+        if (content.serverStatus == 2) {
+            window.location.reload();
+        } else {
+            var saida = JSON.stringify(content)
+            document.getElementById('status').innerHTML = saida
+        }
+    })();
+}
+
 async function listClients() {
-    const response = await axios.get('http://107.152.47.102:3000/tasks')
+    const response = await axios.get('https://api.spacewebso.com.br/tasks')
     const clients = response.data
     const lista = document.getElementById('list-clients')
 
@@ -120,9 +176,22 @@ async function listClients() {
     })
 }
 
+async function listSCHMessage() {
+    const response = await axios.get('https://api.spacewebso.com.br/schmessage')
+    const clients = response.data
+    const lista = document.getElementById('list-clients')
+
+    clients.forEach(client => {
+        idd = client.id
+        const item = document.createElement('tr')
+        item.innerHTML = `<th>${client.client}</th><th>${client.number}</th><th>${client.date}</th>`
+        lista.appendChild(item)
+    })
+}
+
 async function deleteClient() {
     console.log(document.getElementById('number').value)
-    const response = await axios.delete(`http://107.152.47.102:3000/tasks/number/${document.getElementById("number").value}`)
+    const response = await axios.delete(`https://api.spacewebso.com.br/tasks/number/${document.getElementById("number").value}`)
     window.location.reload();
 }
 

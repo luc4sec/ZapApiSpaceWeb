@@ -50,5 +50,11 @@ async function deleteClient() {
     window.location.reload();
 }
 
+async function sendMessage(){
+    console.log('Enviando mensagem')
+    
+    const 
+}
+
 
 listClients()
