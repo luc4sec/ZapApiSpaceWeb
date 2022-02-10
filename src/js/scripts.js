@@ -164,7 +164,7 @@ function schMessage() {
 }
 
 async function listClients() {
-    const response = await axios.get('https://api.spacewebso.com.br/tasks')
+    const response = await axios.get('https://api.spacewebso.com.br:3000/tasks')
     const clients = response.data
     const lista = document.getElementById('list-clients')
 
@@ -177,7 +177,7 @@ async function listClients() {
 }
 
 async function listSCHMessage() {
-    const response = await axios.get('https://api.spacewebso.com.br/schmessage')
+    const response = await axios.get('https://api.spacewebso.com.br:3000/schMessage')
     const clients = response.data
     const lista = document.getElementById('list-clients')
 
@@ -191,9 +191,8 @@ async function listSCHMessage() {
 
 async function deleteClient() {
     console.log(document.getElementById('number').value)
-    const response = await axios.delete(`https://api.spacewebso.com.br/tasks/number/${document.getElementById("number").value}`)
+    const response = await axios.delete(`https://api.spacewebso.com.br:3000/tasks/number/${document.getElementById("number").value}`)
     window.location.reload();
 }
 
-
-listClients()
+listSCHMessage()
