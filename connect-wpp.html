@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>Space Web Soluções</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="shortcut icon" href="https://web.whatsapp.com/img/favicon/1x/favicon.png" type="image/png">
+    <link rel="apple-touch-icon" sizes="194x194" href="https://web.whatsapp.com/apple-touch-icon.png" type="image/png">
+    <link rel="stylesheet" id="style" href="./src/css/qrcode.css">
+
+</head>
+
+<body>
+    <div id="app">
+        <div class="app-wrapper app-wrapper-web">
+            <div id="wrapper">
+                <div id="window">
+                    <div class="entry-main">
+                        <div class="qrcode">
+                            <img alt="Leia o QRCODE" id="base64" style="display: block;" src="./images/qr-start.png">
+                        </div>
+                        <div class="entry-text" style="text-align: center;">
+                            <div class="entry-title">Space Web SO</div>
+                            <div class="entry-subtitle">Use o WhatsApp no seu telefone para ler o qrcode</div>
+                            <div class="entry-controls">
+                                <label> <button type="button" id="buttonStart" class="btn btn-primary"> Conectar nova
+                                        sessão</button> </label>
+                                <br><br>
+                                <label> <button type="button" id="verify" class="btn btn-primary"> Verificar
+                                        Sessão</button> </label>
+                                <!-- <div class="hint">Será iniciado uma sessão com nome inserido no javascript</div> -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.socket.io/4.3.2/socket.io.min.js"
+    integrity="sha384-KAZ4DtjNhLChOB/hxXuKqhMLYvx3b5MlT55xPEiNmREKRzeEm+RVPlTnAn0ajQNs" crossorigin="anonymous">
+</script>
+<script src="./src/js/socket.io.js"></script>
+
+<script>
+    document.getElementById('verify').style.visibility = "hidden";
+
+
+    $(document).ready(() => {
+
+        const SERVIDOR = `api.spacewebso.com.br:2121`
+        const apitoken = `S3c_T0k3n`
+        const session = `Lucas22dds457s`
+        const sessionkey = `senha`
+        const wh_connect = ``
+        const wh_message = ``
+        const wh_status = ``
+        const wh_qrcode = ``
+
+        try {
+
+            socket = io(`${SERVIDOR}`, {
+                withCredentials: false,
+            });
+
+        } catch (error) {
+            console.log('API Desconectada!!! cd /opt/MyZap2.x.x.x node start index.js')
+        }
+
+        $(`#buttonStart`).on(`click`, async () => {
+            await init(apitoken, session, sessionkey, wh_connect, wh_message, wh_status, wh_qrcode)
+        })
+
+        async function init() {
+            var myHeaders = new Headers()
+            myHeaders.append("Content-Type", "application/json");
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            const response = await fetch(
+                `http://api.spacewebso.com.br:2121/api/${session}/${apitoken}/generate-token`,
+                requestOptions)
+            const content = await response.json()
+                .then(async function getQr(content) {
+                    myHeaders.append("Authorization", `Bearer ${content.token}`);
+
+                    var requestOptionsQr = {
+                        method: 'POST',
+                        headers: myHeaders,
+                        body: raw,
+                        redirect: 'follow'
+                    };
+
+                    var raw = JSON.stringify({
+                        "webhook": null,
+                        "waitQrCode": true
+                    });
+
+                    const responseQrcode = await fetch(
+                        `http://api.spacewebso.com.br:2121/api/${session}/start-session`,
+                        requestOptionsQr)
+                    const contentQrcode = await responseQrcode.json()
+                    if (contentQrcode.qrcode == null) {
+                        init()
+                    } else {
+                        document.getElementById('base64').src = contentQrcode.qrcode
+                        //document.getElementById('token').innerHTML = content.token
+                        //alert(content.token)
+                        document.getElementById('verify').style.visibility = "visible";
+                        $(`#verify`).on(`click`, async () => {
+                            await verify(content)
+                        })
+                    }
+                })
+
+
+            async function verify(content) {
+                //const tokenn = content.token
+                console.log(content)
+                var myHeaders = new Headers();
+                myHeaders.append("Authorization", `Bearer ${content.token}`);
+
+                var requestOptions = {
+                    method: 'GET',
+                    headers: myHeaders,
+                    redirect: 'follow'
+                };
+
+                const responseVerify = await fetch(
+                    `http://api.spacewebso.com.br:2121/api/${session}/check-connection-session`,
+                    requestOptions)
+                const contentVerify = await responseVerify.json()
+                console.log(contentVerify)
+                if (contentVerify.status == true) {
+                    alert('WhatsApp Verificado!')
+                } 
+                if (contentVerify.status == false) {
+                    alert('Não conectado, tente novamente!')
+                }
+            }
+
+
+        }
+    })
+</script>
