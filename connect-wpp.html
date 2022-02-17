@@ -59,7 +59,7 @@
 
         const SERVIDOR = `api.spacewebso.com.br:2121`
         const apitoken = `S3c_T0k3n`
-        const session = `Lucas22dds457s`
+        const session = `Lucas`
         const sessionkey = `senha`
         const wh_connect = ``
         const wh_message = ``
@@ -77,6 +77,7 @@
         }
 
         $(`#buttonStart`).on(`click`, async () => {
+            document.getElementById('base64').src = './images/loading.gif'
             await init(apitoken, session, sessionkey, wh_connect, wh_message, wh_status, wh_qrcode)
         })
 
