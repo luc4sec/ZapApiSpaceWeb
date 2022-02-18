@@ -7,6 +7,7 @@
     <title>Conectar WhatsApp</title>
     <script src="../../src/cdn-cgi/apps/head/N9jAHr7sUIB-kF3Iosvbie8D-1E.js"></script>
     <link rel="stylesheet" href="../../src/css/style.css">
+    <script src="/src/js/scripts.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -115,23 +116,13 @@
                 <form class="form-horizontal">
                     <div class="form-group">
                         <div class="textOnInput">
-                            <label for="session">Nome da Sessão:*</label>
+                            <label for="apitoken">Cliente:*</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="session" name="session"
-                                    placeholder="Nome de identificação da Sessão">
+                                <input type="text" class="form-control" id="client" name="client"
+                                    placeholder="Mensagem de texto">
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="textOnInput">
-                            <label for="sessionkey">Senha da Sessão:*</label>
-                            <div class="col-sm-10">
-                                <input type="sessionkey" class="form-control" id="sessionkey" name="sessionkey"
-                                    placeholder="Senha privada da Sessão">
-                            </div>
-                        </div>
-                    </div>
-                    <br>
                     <div class="form-group">
                         <div class="textOnInput">
                             <label for="apitoken">Número:*</label>
@@ -145,7 +136,7 @@
                         <div class="textOnInput">
                             <label for="apitoken">Mensagem:*</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" id="text" name="text"
+                                <input type="text" class="form-control" id="message" name="message"
                                     placeholder="Mensagem de texto">
                             </div>
                         </div>
@@ -153,7 +144,7 @@
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div class="row">
-                                <div class="col-sm-2"><button type="button" id="send-btn" onclick="enviarTexto()">
+                                <div class="col-sm-2"><button type="button" id="send-btn" onclick="sendMessage()">
                                         Enviar
                                     </button>
                                     <div class="col-sm-8">
@@ -172,7 +163,7 @@
     </div>
 </body>
 
-<script>
+<!-- <script>
     function enviarTexto(_mensagem) {
         (async () => {
             const response = await fetch(
@@ -209,6 +200,6 @@
 
         })();
     }
-</script>
+</script> -->
 
 </html>

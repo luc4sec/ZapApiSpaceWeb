@@ -8,6 +8,7 @@
     <script src="../../src/cdn-cgi/apps/head/N9jAHr7sUIB-kF3Iosvbie8D-1E.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../../src/js/scripts.js"></script>
+    <script>listSCHMessage()</script>
     <link rel="stylesheet" href="../../src/css/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -143,15 +144,22 @@
                             </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="textOnInput">
+                            <label for="sessionkey">Data (dd/mm/AAAA hh): </label>
+                            <div class="col-sm-10">
+                                <input type="sessionkey" class="form-control" id="date" name="date"
+                                    placeholder="Mensagem">
+                            </div>
+                        </div>
+                    </div>
 
-                    <!--DATA-->
-
-                    <button type="button" id="send-btn" onclick="addClient()">
-                        Enviar
+                    <button type="button" id="send-btn" onclick="schMessage()">
+                        Agendar
                     </button>
-                    <button type="button" id="send-btn" onclick="deleteClient()">
+                    <!-- <button type="button" id="send-btn" onclick="">
                         Deletar
-                    </button>
+                    </button> -->
                     <div class="col-sm-8">
                         <span id="status"></span>
                     </div>

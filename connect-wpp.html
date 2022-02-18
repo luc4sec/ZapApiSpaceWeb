@@ -119,7 +119,8 @@
                     } else {
                         document.getElementById('base64').src = contentQrcode.qrcode
                         //document.getElementById('token').innerHTML = content.token
-                        //alert(content.token)
+                        alert(session)
+                        alert(content.token)
                         document.getElementById('verify').style.visibility = "visible";
                         $(`#verify`).on(`click`, async () => {
                             await verify(content)
@@ -149,7 +150,7 @@
                     alert('WhatsApp Verificado!')
                 } 
                 if (contentVerify.status == false) {
-                    alert('Não conectado, tente novamente!')
+                    verify(content)
                 }
             }
 
