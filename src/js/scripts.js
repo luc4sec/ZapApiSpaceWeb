@@ -63,7 +63,8 @@ function schMessage() {
                     client: document.getElementById("client").value,
                     number: document.getElementById("number").value,
                     message: document.getElementById("message").value,
-                    date: document.getElementById("date").value
+                    date: document.getElementById("date").value,
+                    time: document.getElementById("time").value
                 })
             },
         );
