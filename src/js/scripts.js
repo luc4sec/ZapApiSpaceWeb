@@ -98,7 +98,8 @@ async function listSCHMessage() {
     const lista = document.getElementById('list-clients')
 
     clients.forEach(client => {
-        var date = moment(clients.date).format('DD/MM/YYYY HH:MM')
+        var date = moment(client.date).format('DD/MM/YYYY HH:mm')
+        console.log(client.date)
         const item = document.createElement('tr')
         item.innerHTML = `<th>${client.client}</th><th>${client.number}</th><th>${date}</th>`
         lista.appendChild(item)
