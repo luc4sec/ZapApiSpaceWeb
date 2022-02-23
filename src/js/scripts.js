@@ -1,3 +1,5 @@
+//import * as moment from './moment';
+
 const host = 'http://localhost:3000'
 //const host = 'https://api.spacewebso.com.br:3000'
 function addClient() {
@@ -98,9 +100,9 @@ async function listSCHMessage() {
     const lista = document.getElementById('list-clients')
 
     clients.forEach(client => {
-        idd = client.id
+        var date = moment(clients.date).format('DD/MM/YYYY HH:MM')
         const item = document.createElement('tr')
-        item.innerHTML = `<th>${client.client}</th><th>${client.number}</th><th>${client.date}</th>`
+        item.innerHTML = `<th>${client.client}</th><th>${client.number}</th><th>${date}</th>`
         lista.appendChild(item)
     })
 }
