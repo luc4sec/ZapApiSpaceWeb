@@ -1,7 +1,5 @@
-//import * as moment from './moment';
-
-const host = 'http://localhost:3000'
-//const host = 'https://api.spacewebso.com.br:3000'
+//const host = 'http://localhost:3000'
+const host = 'https://api.spacewebso.com.br:3000'
 function addClient() {
     (async () => {
         const response = await fetch(
